@@ -1,0 +1,29 @@
+.search{
+    margin-top: 10px;
+}
+.cars{
+    margin: 10px;
+    background-color: blueviolet;
+    border-radius: 15%;
+}
+.buttons{
+    background-color: none;
+    margin-top: 50px
+}
+body{
+    background-color: slategray
+}
+.download{
+    margin-bottom: 20px;
+}
+.add{
+    float: right;
+}
+
+.favorites img{
+    max-width: 100%;
+    
+}
+img{
+    max-width: 100%;
+}
