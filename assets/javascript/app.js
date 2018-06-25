@@ -50,15 +50,15 @@ $(document).ready(function () {
                 var newDiv = $("<div>")
                 var newGif = $("<img>")
                 var newP = $("<p>")
-                var download= $("<button>")
+                var download= $("<a>")
                 var favorite = $("<button>")
                 favorite.text("Add to Favorites")
                 favorite.attr("class", "add")
 
                 download.text("Download this Gif")
                 download.attr("class", "download")
-                download.attr("target", "_blank")
                 download.attr("href", results[i].images.original.url)
+                download.attr("download", "img.gif")
                 newGif.attr("src", results[i].images.original_still.url)
                 newGif.attr("alt", searchTerm + "Gif")
                 newGif.attr("data-still-image", results[i].images.original_still.url)
@@ -75,13 +75,13 @@ $(document).ready(function () {
         })
     }}
 
-     function downloadImage(){
-         console.log(this)
-         var href= $(this).attr("href")
-        console.log($("#download").attr("href"))
-        window.location.href = href
+    //  function downloadImage(){
+    //      console.log(this)
+    //      var href= $(this).attr("download")
+    //     console.log($("#download").attr("href"))
+    //     window.location.href = href
 
-     }
+     //}
 
     function animatedStill(){
         console.log(this)
@@ -97,14 +97,16 @@ $(document).ready(function () {
     }
     function addFavorite(){
         console.log(this)
-        var savedFavs = $(".favorites")
+        
         
         $(".favorites").append($(this).siblings())
-        console.log(savedFavs)
+        var savedFavs = $(".favorites")
+        console.log(savedFavs.get(0).innerHTML)
         $(this).hide()
-        localStorage.setItem("favorites", savedFavs.innerHtml)
+        localStorage.setItem("favorites", savedFavs.get(0).innerHTML)
     }
     
+    console.log(localStorage.getItem("favorites"))
     $(".favorites").append(localStorage.getItem("favorites"));
 
     function clearFav(){
@@ -117,7 +119,7 @@ $(document).ready(function () {
     makeButtons()
     $(document).on("click", ".cars", getGifs)
     $(document).on("click", "img", animatedStill)
-    $(document).on("click", ".download", downloadImage)
+    // $(document).on("click", ".download", downloadImage)
     $(document).on("click", ".add", addFavorite)
     $(document).on("click", ".clear", clearFav)
 })
