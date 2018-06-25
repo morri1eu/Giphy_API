@@ -96,9 +96,7 @@ $(document).ready(function () {
 
     }
     function addFavorite(){
-        console.log(this)
-        
-        
+        console.log(this)       
         $(".favorites").append($(this).siblings())
         var savedFavs = $(".favorites")
         console.log(savedFavs.get(0).innerHTML)
